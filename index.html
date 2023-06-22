@@ -67,7 +67,7 @@
                 <input type="button" class="btn btn-outline-success" value="0" onclick="addtoGuess('0')">
               </div>
             </div>
-            <div class="card-footer">
+            <div class="card-footer" id="chkBtn">
               <button onclick="checkGuess()" class="form-control btn btn-success">Check</button>
             </div>
           </div>
@@ -85,6 +85,7 @@
       function checkGuess() {
         const guessInput = document.getElementById("guessInput");
         const numkeys = document.getElementById("numbers");
+        const checkBtn = document.getElementById("chkBtn");
         const guess = parseInt(guessInput.value);
         const message = document.getElementById("message");
 
@@ -95,6 +96,7 @@
           if (guess === randomNumber) {
             message.textContent = `Congratulations! You guessed the correct number in ${attempts} attempts.`;
             numkeys.hidden = true;
+            checkBtn.hidden = true;
           } else if (guess < randomNumber) {
             message.textContent = "Too low! Try a higher number.";
           } else {
